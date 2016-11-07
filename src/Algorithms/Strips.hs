@@ -1,4 +1,4 @@
-module Strips
+module Algorithms.Strips
 ( extractPlan
 , strips
 , ActionType
