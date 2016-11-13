@@ -1,6 +1,8 @@
+[![Build Status](https://travis-ci.org/y-kamiya/strips-haskell.svg?branch=master)](https://travis-ci.org/y-kamiya/strips-haskell)
+
 # STRIPS
-STRIPS is a kind of automated planning algorithm. 
-i adopted A* and backward search algorithm to find appropriate plan
+STRIPS is a kind of automated planning algorithm.   
+i adopted A* algorithm (searching for backward) to find appropriate plan
 
 ## How to Use
 please see test, there is an example to solve blocks world problem  
