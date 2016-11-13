@@ -7,25 +7,25 @@ import Control.Monad.Reader
 
 class (Eq a, Show a ) => ActionType a
 
-class (Eq a, Ord a, Show a) => Term a
+class (Eq b, Ord b, Show b) => Term b
 
 data Action a b = NoAction
                 | Action {
-                    actionType    :: a
-                  , preCondition  :: [b]
-                  , postCondition :: [b]
-                  , actionCost    :: Int
+                    actionType    :: a -- ^ type of action
+                  , preCondition  :: [b] -- ^ list of conditions that must be satisfied before the action is executed
+                  , postCondition :: [b] -- ^ list of conditions that must be satisfied after the action is executed
+                  , actionCost    :: Int -- ^ required cost to execute action
                   } deriving (Eq, Show)
 
 data NodeInfo a b = NoNodeInfo
                   | NodeInfo {
-                      realCost  :: Int
-                    , score     :: Int
-                    , diffCount :: Int
-                    , diff      :: [b]
-                    , condition :: [b]
-                    , action    :: Action a b
-                    , next      :: NodeInfo a b
+                      realCost  :: Int -- ^ total cost actually required to reach the current node
+                    , score     :: Int -- ^ the sum of actual cost and estimate cost
+                    , diffCount :: Int -- ^ count of condition difference between goal and current node (= estimate cost)
+                    , diff      :: [b] -- ^ condition difference between goal and current node
+                    , condition :: [b] -- ^ current condition
+                    , action    :: Action a b -- ^ action to go to next node
+                    , next      :: NodeInfo a b -- ^ next node
                     } deriving (Eq, Show)
 
 data Env a b = Env { envDomain :: [Action a b]
